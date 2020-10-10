@@ -35,10 +35,13 @@ class Phrase {
   }
 //Showing the letters the user guessed right
   showMatchedLetter(letter) {
-    for (let i = 0; i < game.activePhrase.length; i++) {
-      if (letter === game.activePhrase[i]) {
-        document.getElementsByClassName("letter")[i].className += " show";
-        document.getElementsByClassName("letter")[i].className -= " hide";
+    for (let i = 0; i < game.activePhrase.phrase.length; i++) {
+      console.log(game.activePhrase.phrase[i]);
+      if (letter === game.activePhrase.phrase[i]) {
+        console.log(letter);
+        console.log(game.activePhrase.phrase[i]);
+        document.getElementsByClassName("letter")[i].classList.add("show");
+        document.getElementsByClassName("letter")[i].classList.remove('hide');
       }
     }
   }

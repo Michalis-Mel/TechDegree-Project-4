@@ -48,10 +48,10 @@ class Game {
     random.addPhraseToDisplay();
   }
 
-  handleInteraction() {}
+  handleInteraction(button) {}
 
   //Checks if the user has found all the letters or not
-  checkWin() {
+  checkForWin() {
     let count = 0;
     for (let i = 0; i < this.activePhrase.length; i++) {
       if (document.getElementById("letter")[i].contains("show")) {
@@ -78,6 +78,7 @@ class Game {
 
   //Showing the message if the player won or lost at the starting screen 
   gameOver(gameWon) {
+    const startScreen = document.getElementById('overlay');
     startScreen.style.display = "initial";
     let message = document.getElementById("game-over-message");
     let over = document.getElementById("overlay");

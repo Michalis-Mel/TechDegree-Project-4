@@ -6,8 +6,6 @@ const reset = document.getElementById("btn__reset");
 reset.addEventListener("click", () => {
   game = new Game();
   game.startGame();
-  console.log(game.activePhrase.showMatchedLetter('a'));
-  
 });
 
 
