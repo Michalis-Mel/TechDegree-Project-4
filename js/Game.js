@@ -4,15 +4,20 @@ class Game {
     this.phrases = this.createPhrases();
     this.activePhrase = null;
   }
-//Creating an array of 5 phrases and return the array to the this.phrases property
+//Creating an array of 10 phrases and return the array to the this.phrases property
   createPhrases() {
     let phraseArray = [];
     phraseArray = [
-      new Phrase("fuck off"),
-      new Phrase("no hostages"),
+      new Phrase("i am in love"),
+      new Phrase("what a nice weather"),
       new Phrase("good afternoon"),
       new Phrase("how are you today"),
-      new Phrase("my life sucks"),
+      new Phrase("treehouse rocks"),
+      new Phrase("greece is the best place"),
+      new Phrase("i am to the mall"),
+      new Phrase("my dog is beautiful"),
+      new Phrase("i want to get a job"),
+      new Phrase("i am not in the mood"),
     ];
     return phraseArray;
   }
@@ -116,11 +121,21 @@ class Game {
     if (gameWon) {
       message.innerText = "Congratulations.You Won!";
       over.classList.remove("start");
+      if(over.classList.contains('lose')){
+        over.classList.remove('lose');
+      }
+      
       over.classList.add("win");
+      
     } else {
       message.innerText = "You Lost!";
       over.classList.remove("start");
-      over.classList.add("lose");
+      if(over.classList.contains('win')){
+          over.classList.remove('win');
+        }
+        
+          over.classList.add("lose");
+        
     }
 
 
@@ -128,7 +143,10 @@ class Game {
 
     //clearing the letters
     document.querySelector("#phrase > ul").textContent = '';
-    
+
+      //Changing the button to play again after the game ends
+   document.querySelector('#btn__reset').innerText= 'Play Again';
+
   //clearing the querty keyboard
     const keyboard = document.querySelectorAll("#qwerty div button");
     for (let i = 0; i < keyboard.length; i++) {

@@ -21,3 +21,5 @@ I made the following changes to the style of the game:
     8. Changed the background from the main game page
 
     9. Changed the color from the title in the main game page
+
+    10. Changed the reset button to 'play again' after the user finishes the game
