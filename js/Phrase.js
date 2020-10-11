@@ -26,23 +26,22 @@ class Phrase {
   }
 
   // This function checks if a letter is contained in the this.phrase of the phrase object.
-  checkLetter(letter) {
-    if (this.phrase.includes(letter.toLowerCase())) {
+  checkLetter(guess) {
+    if (this.phrase.includes(guess.toLowerCase())) {
       return true;
     } else {
       return false;
     }
   }
-//Showing the letters the user guessed right
-  showMatchedLetter(letter) {
-    for (let i = 0; i < game.activePhrase.phrase.length; i++) {
-      console.log(game.activePhrase.phrase[i]);
-      if (letter === game.activePhrase.phrase[i]) {
-        console.log(letter);
-        console.log(game.activePhrase.phrase[i]);
-        document.getElementsByClassName("letter")[i].classList.add("show");
-        document.getElementsByClassName("letter")[i].classList.remove('hide');
-      }
-    }
+  //Showing the letters the user guessed right
+  showMatchedLetter(guess){
+    //phrase colors 
+    let phraseLetter = document.querySelectorAll('li.hide.letter');
+    phraseLetter.forEach(letter =>{
+        if(guess == letter.textContent.toLowerCase()){
+             letter.classList.add('show');
+             letter.classList.remove('hide');
+        }
+    })
   }
 }

@@ -48,22 +48,51 @@ class Game {
     random.addPhraseToDisplay();
   }
 
-  handleInteraction(button) {}
+  
+    handleInteraction(button) {
+      //disabling the button that the user pressed
+      button.disabled = true;
+      if (this.checkForWin() !== true) {
+        if (this.activePhrase.checkLetter(button.textContent)) {
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(button.textContent);
+
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
+        } else {
+            button.classList.add('wrong');
+            this.removeLife();
+        }
+    }  
+  }
 
   //Checks if the user has found all the letters or not
   checkForWin() {
+    //counting the spaces and the letters in the phrase
+    let spaces = 0;
     let count = 0;
-    for (let i = 0; i < this.activePhrase.length; i++) {
-      if (document.getElementById("letter")[i].contains("show")) {
-        count++;
-      }
-    }
-    if (count === this.activePhrase.length) {
+    //Putting all the letters of the phrase in the phraseElements array(it's a tip that i got from slack)
+    const phraseElements = Array.from(document.querySelector("#phrase > ul").children);
+
+    //Checking if all the letters of the phrase are found with the counting variables
+    phraseElements.forEach(letter => {
+        if (letter.className !== 'space') {
+            if (letter.classList.contains('show')) {
+                count++;
+        }
+        }else{
+          spaces++;
+        }
+    });
+
+    if (phraseElements.length === (count + spaces)){
       return true;
-    } else {
+    }else{
       return false;
     }
-  }
+    }
+  
 
   //Removing the heart image and replacing it with the lostheart img when a user guesses the wrong letter
   //If he has lost 5 hearts i call the gameOver function to end the game
@@ -80,6 +109,8 @@ class Game {
   gameOver(gameWon) {
     const startScreen = document.getElementById('overlay');
     startScreen.style.display = "initial";
+
+    document.querySelector('.title').style.marginTop = '43vh';
     let message = document.getElementById("game-over-message");
     let over = document.getElementById("overlay");
     if (gameWon) {
@@ -91,5 +122,25 @@ class Game {
       over.classList.remove("start");
       over.classList.add("lose");
     }
+
+
+    //Clearing the game so it can start from the start after it is over
+
+    //clearing the letters
+    document.querySelector("#phrase > ul").textContent = '';
+    
+  //clearing the querty keyboard
+    const keyboard = document.querySelectorAll("#qwerty div button");
+    for (let i = 0; i < keyboard.length; i++) {
+      keyboard[i].className = 'key';
+      keyboard[i].disabled = false;
+    }
+
+    //clearing the heart images
+    const hearts = document.querySelector("#scoreboard > ol");
+    for (let i = 0; i < hearts.children.length; i++) {
+      hearts.children[i].firstElementChild.src = "images/liveHeart.png";            
+    }
   }
 }
+

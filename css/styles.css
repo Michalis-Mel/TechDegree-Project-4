@@ -6,13 +6,13 @@
 :root {
   --color-win: #78cf82;
   --color-lose: #d94545;
-  --color-start: #5b85b7;
-  --color-neutral: #445069;
+  --color-start: #4380ca;
+  --color-neutral: #2c4c90;
   --color-neutral-light: #d2d2d2;
-  --color-keys: #37474f;
+  --color-keys: #242729;
   --color-keys-light: #e5e5e5;
-  --font-size-large: 60px;
-  --font-size-medium: 20px;
+  --font-size-large: 65px;
+  --font-size-medium: 25px;
   --transition: all 0.2s ease-in-out;
 }
 
@@ -28,6 +28,8 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: url(../images/wood.jpg);
+  overflow-y: hidden;
 }
 
 li,
@@ -62,9 +64,21 @@ button {
   cursor: pointer;
 }
 
+button.key:hover {
+  transform: scale(1.15);
+  background: rgb(120, 191, 194);
+  color: #000;
+}
+
 #btn__reset {
   width: 200px;
   margin: 0 auto;
+}
+
+#btn__reset:hover {
+  transform: scale(1.25);
+  background: #fff;
+  color: #000;
 }
 
 .main-container {
@@ -88,7 +102,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #b2edff;
 }
 
 /* Phrase */
@@ -177,7 +191,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: var(--color-neutral);
 }
 
 .start a {
@@ -193,7 +207,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: var(--color-lose);
 }
 
 .lose a {
