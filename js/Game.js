@@ -138,7 +138,6 @@ class Game {
         
     }
 
-
     //Clearing the game so it can start from the start after it is over
 
     //clearing the letters
