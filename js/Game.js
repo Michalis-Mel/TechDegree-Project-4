@@ -113,7 +113,8 @@ class Game {
   //Showing the message if the player won or lost at the starting screen 
   gameOver(gameWon) {
     const startScreen = document.getElementById('overlay');
-    startScreen.style.display = "initial";
+    startScreen.style.display = "initial"; 
+    
 
     document.querySelector('.title').style.marginTop = '43vh';
     let message = document.getElementById("game-over-message");

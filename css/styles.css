@@ -65,7 +65,7 @@ button {
 }
 
 button.key:hover {
-  /* transform: scale(1.15); i deleted this line because the animation created a bug and the letters showed up on top of the win/lose overlay*/
+  /*transform: scale(1.15);  i deleted this line because the animation created a bug and the letters showed up on top of the win/lose overlay*/
   background: rgb(120, 191, 194);
   color: #000;
 }
