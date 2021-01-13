@@ -6,4 +6,4 @@ OOP HangMan Game Show App
 
 - HTML
 - CSS
-- JavaScripr
+- JavaScript
